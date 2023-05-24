@@ -65,6 +65,13 @@
           @endforeach
         </select>
       </div>
+      <div class="mb-3 form-group">
+        <h4>Tecnologie utlizzate</h4>
+        @foreach($technologies as $technology)
+        <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked($project->technologies->contains($technology))>
+        <label for="technology-{{$technology->id}} ">{{$technology->name}}</label>
+        @endforeach
+      </div>
       <button type="submit" class="btn btn-primary">Salva</button>
       </form>
   </div>
