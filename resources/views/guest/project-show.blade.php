@@ -32,6 +32,16 @@
             <td>{{ $project->type->name }}</td>
           </tr>
           @endif
+          <tr>
+            <th>Linguaggi utilizzati:</th>
+            <td>
+                <span>
+                    @foreach($project->technologies as $technology)
+                    {{$technology->name}}
+                    @endforeach
+                </span>
+            </td>
+        </tr>
       </tbody>
   </table>
 </div>
