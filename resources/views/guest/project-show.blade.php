@@ -26,10 +26,12 @@
               <th>Data di pubblicazione:</th>
               <td>{{ $project->publication_date }}</td>
           </tr>
+          @if (isset($project->type->name))
           <tr>
             <th>Tipo di progetto:</th>
             <td>{{ $project->type->name }}</td>
-        </tr>
+          </tr>
+          @endif
       </tbody>
   </table>
 </div>

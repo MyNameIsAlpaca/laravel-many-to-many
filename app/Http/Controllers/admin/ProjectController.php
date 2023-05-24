@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,10 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
-        return view('admin.projects.add_projects', compact('types'));
+
+        $technologies = Technology::all();
+
+        return view('admin.projects.add_projects', compact('types', 'technologies'));
     }
 
     /**
@@ -60,6 +64,11 @@ class ProjectController extends Controller
         $newProject->slug = Str::slug($newProject->name, '-');
 
         $newProject->save();
+
+        if (array_key_exists('technologies', $data)) {
+
+            $newProject->technologies()->attach($data['technologies']);
+        }
 
         return redirect()->route('admin.projects.index');
     }

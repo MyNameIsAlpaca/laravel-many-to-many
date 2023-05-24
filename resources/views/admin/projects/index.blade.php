@@ -6,7 +6,7 @@
     <div class="card-container">
       @foreach ($projects as $project)
       <div class="card-inner">
-        <a href="{{$project->link}}" class="card">
+        <a href="{{route('guest.projects.show', $project->slug)}}" class="card">
           <div class="div">
             <h5 class="card-title">{{$project->name}}</h5>
             <span class="desc">{{$project->desc}}</span>
