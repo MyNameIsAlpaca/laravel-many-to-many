@@ -20,8 +20,8 @@
           <th scope="row">{{$type->id}}</th>
           <td>{{$type->name}}</td>
           <td>{{$type->desc}}</td>
-          <td><i class="fa-solid fa-trash"></i></td>
-          <td><i class="fa-solid fa-pen-to-square"></i></td>
+          <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
+          <td><a href="{{ route('types.edit', $type) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
         </tr>
         @endforeach
       </tbody>

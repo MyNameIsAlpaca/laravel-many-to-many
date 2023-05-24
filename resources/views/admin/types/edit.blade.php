@@ -4,14 +4,16 @@
 
 <div class="container">
   <div class="addProjects">
-    <h1>Aggiungi un tipo</h1>
+    <h1>Modifica un tipo</h1>
     
-    <form action="{{route('admin.types.store')}}" method="POST">
+    <form action="{{route('types.update', $type)}}" method="POST">
     @csrf
 
+    @method('PUT')
+
     <div class="mb-3">
-      <label for="name">Aggiungi un nome</label>
-      <input required value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name">
+      <label for="name">Modifica il nome</label>
+      <input required value="{{old('name') ?? $type->name}}" class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name">
       @error('name')
           <div class="invalid-feedback">
             {{$message}}
@@ -19,8 +21,8 @@
         @enderror
     </div>
     <div class="mb-3">
-      <label for="desc">Aggiungi una descrizione</label>
-      <textarea required class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc">{{old('desc')}}</textarea>
+      <label for="desc">Modifica la descrizione</label>
+      <textarea required class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc">{{old('desc') ?? $type->desc}}</textarea>
       @error('desc')
           <div class="invalid-feedback">
             {{$message}}
