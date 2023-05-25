@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\admin\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TechnologiesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,12 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         'create' => 'admin.types.create',
         'store' => 'admin.types.store',
         'show' => 'admin.types.show',
+    ]);
+    Route::resource('technologies', TechnologiesController::class)->names([
+        'index' => 'admin.technologies.index',
+        'create' => 'admin.technologies.create',
+        'store' => 'admin.technologies.store',
+        'show' => 'admin.technologies.show',
     ]);
     Route::get('/', [AdminController::class, 'home']);
 });
