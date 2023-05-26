@@ -99,6 +99,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+
         $types = Type::all();
         $technologies = Technology::all();
 
@@ -114,10 +115,18 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $this->validation($request);
-
         $data = $request->all();
 
+        $this->validation($request);
+
+        if ($request->hasFile('project_image')) {
+            if ($project->project_image) {
+                Storage::delete($project->project_image);
+            }
+            $path = Storage::put('project_image', $request->project_image);
+
+            $data['project_image'] = $path;
+        }
 
         $project->update($data);
 

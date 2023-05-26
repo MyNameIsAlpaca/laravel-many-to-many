@@ -6,11 +6,21 @@
   <div class="addProjects">
     <h1>Modifica il progetto</h1>
     
-    <form action="{{route('projects.update', $project)}}" method="POST">
+    <form action="{{route('projects.update', $project)}}" method="POST" enctype="multipart/form-data">
       @csrf
 
       @method('PUT')
-  
+      
+      <div class="mb-3">
+        <label for="project_image">Modifica l'immagine</label>
+        <input type="file" id="project_image" name="project_image" class="form-control @error('project_image') is-invalid @enderror" >
+        @error('project_image')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>    
+        @enderror
+      </div>
+
       <div class="mb-3">
         <label for="name">Modifica il nome</label>
         <input required value="{{old('name') ?? $project->name}}" class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name">
