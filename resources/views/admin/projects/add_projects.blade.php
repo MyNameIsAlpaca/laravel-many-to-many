@@ -6,8 +6,18 @@
   <div class="addProjects">
     <h1>Aggiungi un progetto</h1>
     
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
+
+    <div class="mb-3">
+      <label for="project_image">Aggiungi un'immagine</label>
+      <input type="file" id="project_image" name="project_image" class="form-control @error('project_image') is-invalid @enderror">
+      @error('project_image')
+      <div class="invalid-feedback">
+        {{$message}}
+      </div>
+      @enderror
+    </div>
 
     <div class="mb-3">
       <label for="name">Aggiungi un nome</label>

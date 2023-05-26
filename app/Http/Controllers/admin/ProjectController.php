@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -54,6 +55,12 @@ class ProjectController extends Controller
 
         $newProject = new Project();
 
+        if ($request->hasFile('project_image')) {
+            $path = Storage::put('project_image', $request->project_image);
+            $data['project_image'] = $path;
+        };
+
+        $newProject->project_image = $path;
         $newProject->name = $data['name'];
         $newProject->desc = $data['desc'];
         $newProject->language = $data['language'];

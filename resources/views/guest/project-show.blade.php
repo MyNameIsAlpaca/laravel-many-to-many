@@ -11,6 +11,11 @@
               <td>{{ $project->name }}</td>
           </tr>
           <tr>
+            <td>
+                <img src="{{ asset('/storage/' . $project->project_image) }}" alt="" class="w-50">
+            </td>
+          </tr>
+          <tr>
               <th>Descrizione:</th>
               <td>{{ $project->desc }}</td>
           </tr>
