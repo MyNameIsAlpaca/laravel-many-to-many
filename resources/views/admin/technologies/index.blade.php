@@ -54,6 +54,11 @@
         @endforeach
       </tbody>
     </table>
+    <a href="{{ route('admin.technologies.create') }}">
+      <button class="btn btn-secondary">
+        Aggiungi un linguaggio
+      </button>
+    </a>
   </div>
 
 </div>

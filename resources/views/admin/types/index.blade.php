@@ -15,6 +15,7 @@
         </tr>
       </thead>
       <tbody>
+        
         @foreach ($types as $type)
         <tr>
           <th scope="row">{{$type->id}}</th>
@@ -54,6 +55,11 @@
         @endforeach
       </tbody>
     </table>
+    <a href="{{ route('admin.types.create') }}">
+      <button class="btn btn-secondary">
+        Aggiungi un tipo
+      </button>
+    </a>
   </div>
 
 </div>
